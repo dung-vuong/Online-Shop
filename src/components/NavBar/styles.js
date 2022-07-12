@@ -12,7 +12,6 @@ export default makeStyles()((theme) => ({
     },
   },
   title: {
-    flexGrow: 1,
     alignItems: 'center',
     display: 'flex',
     textDecoration: 'none',
@@ -20,14 +19,15 @@ export default makeStyles()((theme) => ({
   image: {
     marginRight: '10px',
   },
+  button: {
+    marginLeft: "auto",
+    marginRight: 0
+  },
   menuButton: {
     marginRight: theme.spacing(2),
     [theme.breakpoints.up('sm')]: {
       display: 'none',
     },
-  },
-  grow: {
-    flexGrow: 1,
   },
   search: {
     position: 'relative',

@@ -36,7 +36,7 @@ const AddressForm = ({checkoutToken, next}) => {
     const fetchOptions = async (checkoutTokenId, country, region = null) => {
         const options = await commerce.checkout.getShippingOptions(checkoutTokenId, {country, region})
         setOptions(options)
-        setOption(options.id[0])
+        setOption(options[0].id)
     }
 
     useEffect(() => {

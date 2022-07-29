@@ -9,7 +9,7 @@ import useStyles from './styles'
 
 const steps = ['Shipping Address', 'Payment details']
 
-const Checkout = ({cart}) => {
+const Checkout = ({cart, handleCaptureCheckout, order, errorMessage}) => {
     const {classes} = useStyles()
     const [activeStep, setActiveStep] = useState(0)
     const [shippingData, setShippingData] = useState({})
@@ -37,8 +37,17 @@ const Checkout = ({cart}) => {
     }
 
     const Form = () => activeStep === 0 
-        ? <AddressForm checkoutToken={checkoutToken} next={next}/>
-        : <PaymentForm shippingData={shippingData} checkoutToken={checkoutToken} backStep={backStep}/>
+        ?   <AddressForm 
+                checkoutToken={checkoutToken} 
+                next={next}
+            />
+        :   <PaymentForm 
+                shippingData={shippingData} 
+                checkoutToken={checkoutToken} 
+                backStep={backStep}
+                handleCaptureCheckout={handleCaptureCheckout}
+                nextStep={nextStep}
+            />
 
     return (
         <>

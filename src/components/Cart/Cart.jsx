@@ -16,7 +16,7 @@ const Cart = ({cart, handleUpdateCart, handleRemoveCart, handleEmptyCart}) => {
     const FilledCard = () => (
         <>
             <Grid container spacing={3}>
-                {cart.line_items.map((item) => (
+                {cart.line_items && cart.line_items.map((item) => (
                     <Grid item xs={12} sm={4} key={item.id}>
                         <CartItem 
                             item={item}
@@ -28,7 +28,7 @@ const Cart = ({cart, handleUpdateCart, handleRemoveCart, handleEmptyCart}) => {
             </Grid>
             <div className={classes.cardDetails}>
                 <Typography variant='h4'>
-                    Subtotal: {cart.subtotal.formatted_with_symbol}
+                    Subtotal: {cart.subtotal && cart.subtotal.formatted_with_symbol}
                 </Typography>
                 <div>
                     <Button 
@@ -57,14 +57,12 @@ const Cart = ({cart, handleUpdateCart, handleRemoveCart, handleEmptyCart}) => {
             </div>
         </>
     )
-
-    if (!cart.line_items) return 'Loading ...'
-
+    
     return (
         <Container>
             <div className={classes.toolbar}/>
             <Typography variant='h3' className={classes.title} gutterBottom>Your Shopping Cart</Typography>
-            {cart.line_items.length === 0 ? <EmptyCard/> : <FilledCard/>}
+            {cart.line_items && cart.line_items.length === 0 ? <EmptyCard/> : <FilledCard/>}
         </Container>
     )
 }

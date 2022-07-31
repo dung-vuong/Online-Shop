@@ -1,10 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { Paper, Stepper, Step, StepLabel, Typography, CircularProgress, Divider, Button } from '@mui/material'
-
+import { Link, useNavigate } from 'react-router-dom'
 import  {commerce} from '../../../lib/commerce'
+
 import PaymentForm from '../PaymentForm'
 import AddressForm from '../AddressForm'
-import Confirmation from '../Confirmation'
+
 import useStyles from './styles'
 
 const steps = ['Shipping Address', 'Payment details']
@@ -14,6 +15,7 @@ const Checkout = ({cart, handleCaptureCheckout, order, errorMessage}) => {
     const [activeStep, setActiveStep] = useState(0)
     const [shippingData, setShippingData] = useState({})
     const [checkoutToken, setCheckoutToken] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() => {
         const generateToken = async () => {
@@ -48,7 +50,33 @@ const Checkout = ({cart, handleCaptureCheckout, order, errorMessage}) => {
                 handleCaptureCheckout={handleCaptureCheckout}
                 nextStep={nextStep}
             />
+    const Confirmation = () => order.customer ? (
+        <>
+            <div>
+                <Typography variant='h5'>
+                    Thanks for your purchase, {order.customer.firstname} {order.customer.lastname}.
+                </Typography>
+                <Divider className={classes.divider}/>
+                <Typography variant="subtitle2">Order ref: {order.customer_reference}</Typography>
+            </div>
+            <br/>
+            <Button component={Link} to="/" variant="outlined" type="button">Back to Store</Button>  
+        </>
+    ) : (
+        <div className={classes.spinner}>
+            <CircularProgress/>
+        </div>
+    )
 
+    if (errorMessage){
+        <>
+            <Typography variant="h5">Error: {errorMessage}</Typography>
+            <br/>
+            <Button component={Link} to="/" variant="outlined" type="button">Back to Store</Button>  
+        </>
+    }
+
+    
     return (
         <>
             <div className={classes.toolbar}/>
@@ -62,7 +90,10 @@ const Checkout = ({cart, handleCaptureCheckout, order, errorMessage}) => {
                             </Step>
                         ))}
                     </Stepper>
-                    {activeStep === steps.length ? <Confirmation/> : checkoutToken && <Form/>}
+                    {activeStep === steps.length 
+                        ? <Confirmation/> 
+                        : checkoutToken && <Form/>
+                    }
                 </Paper>
             </main>
         </>

@@ -22,7 +22,7 @@ const NavBar = ({cart}) => {
                         ?
                             (<div className={classes.button}>
                                 <IconButton component={Link} to="/cart" aria-label='Show Cart Items' color='inherit'>
-                                    <Badge badgeContent={cart.total_items} color='secondary'>
+                                    <Badge badgeContent={cart && cart.total_items} color='secondary'>
                                         <ShoppingCart/>
                                     </Badge>
                                 </IconButton>

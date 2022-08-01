@@ -11,9 +11,9 @@
 
 ## ⬇️ What I have done ⬇️
 ### The following features included:
-- Created responsive Todo List App using React
-- Components management
-- Use localStorage.setItem and localStorage.getItem, and use UseEffect to load and save the data into the local storage.
+- Created responsive Online Shop Website using React
+- Use Commerce.js to store Items (Commerce.js is a powerful eCommerce SDK for building custom cart and checkout experiences)
+- Use Stripe to handle payment method (APIs to accept payments, send payouts, and manage their businesses online)
 
 ## ⬇️ Demo Run ⬇️ 
 https://user-images.githubusercontent.com/79184498/179880804-20a986ad-afa0-44c4-9f07-59be0661986d.mp4

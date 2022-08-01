@@ -16,5 +16,4 @@
 - Use Stripe to handle payment method (APIs to accept payments, send payouts, and manage their businesses online)
 
 ## ⬇️ Demo Run ⬇️ 
-https://user-images.githubusercontent.com/79184498/179880804-20a986ad-afa0-44c4-9f07-59be0661986d.mp4
-
+https://user-images.githubusercontent.com/79184498/182233097-9417c00f-38ae-4c67-9f71-2d247afd2c50.mp4
